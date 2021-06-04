@@ -102,7 +102,11 @@ namespace custom_stl{
     }
 
     template <typename T> void vector<T>::push_back(T element){
-
+        if(curr_size == capacity){
+            resize(curr_size);
+        }
+        beginit[curr_size] = element;
+        curr_size++;
     }
 
     template <typename T> void vector<T>::fill_same_element(T* start, T element){
