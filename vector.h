@@ -17,6 +17,7 @@ namespace custom_stl{
             vector(int);
             vector(int, T);
             int size();
+            int max_capacity();
             bool empty();
             void resize(int);
             void resize(int, T);
@@ -54,6 +55,10 @@ namespace custom_stl{
 
     template <typename T> int vector<T>::size(){
         return curr_size;
+    }
+
+    template <typename T> int vector<T>::max_capacity(){
+        return capacity;
     }
 
     template <typename T> bool vector<T>::empty(){
