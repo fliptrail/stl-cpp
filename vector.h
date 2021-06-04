@@ -24,6 +24,7 @@ namespace custom_stl{
             T * begin();
             T * end();
             T get_element(int);
+            void set_element(int, T);
             void push_back(T);
     };
 
@@ -68,6 +69,11 @@ namespace custom_stl{
     // return element at given index
     template <typename T> T vector<T>::get_element(int idx){
         return *(beginit + idx);
+    }
+
+    // set given element at given index
+    template <typename T> void vector<T>::set_element(int idx, T element){
+        beginit[idx] = element;
     }
 
     int min(int a, int b){
