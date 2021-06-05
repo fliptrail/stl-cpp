@@ -7,6 +7,7 @@ namespace custom_stl{
     template <typename T> T max(T a, T b);
     template <typename T> T * min_element(T * begin, T * end);
     template <typename T> T * max_element(T * begin, T * end);
+    template <typename T> T * find(T * begin, T * end, T element);
 
     template <typename T> void printall(T * begin, T * end, char sep){
         while(begin != end){
@@ -62,5 +63,17 @@ namespace custom_stl{
             curr_element++;
         }
         return ans;
+    }
+
+    // returns pointer to first occurance of the given element in the given pointer range
+    // return end pointer if element is not found or container is empty
+    template <typename T> T * find(T * begin, T * end, T element){
+        while(begin != end){
+            if(*begin == element){
+                return begin;
+            }
+            begin++;
+        }
+        return begin;
     }
 }
