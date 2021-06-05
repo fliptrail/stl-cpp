@@ -36,6 +36,8 @@ int main(){
     printall(a.begin(), a.end(), ' ');
     reverse(a.begin() + 1, a.begin() + 4);
     printall(a.begin(), a.end(), ' ');
-
+    
+    custom_stl::pair<int, int> hello;
+    vector<vector<custom_stl::pair<int, double>>> hello2(5);
     return 0;
 }
