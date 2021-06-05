@@ -1,3 +1,4 @@
+#include "algorithms.h"
 #include "vector.h"
 #include <iostream>
 
@@ -12,17 +13,22 @@ int main(){
     cout<<b.get_element(6)<<endl;
     cout<<b.max_capacity()<<endl;
     vector<int> a(3, 10);
-    cout<<a.get_element(2)<<endl;
-    cout<<a.max_capacity()<<endl;
-    a.push_back(17);
-    cout<<a.get_element(2)<<endl;
-    cout<<a.get_element(3)<<endl;
-    cout<<a.max_capacity()<<endl;
-    a.push_back(21);
-    cout<<a.get_element(2)<<endl;
-    cout<<a.get_element(3)<<endl;
-    cout<<a.get_element(4)<<endl;
-    cout<<a.get_element(5)<<endl;
-    cout<<a.max_capacity()<<endl;
+    // cout<<a.get_element(2)<<endl;
+    // cout<<a.max_capacity()<<endl;
+    a.push_back(37);
+    // cout<<a.get_element(2)<<endl;
+    // cout<<a.get_element(3)<<endl;
+    // cout<<a.max_capacity()<<endl;
+    a.push_back(-1);
+    a.push_back(24);
+    // cout<<a.get_element(2)<<endl;
+    // cout<<a.get_element(3)<<endl;
+    // cout<<a.get_element(4)<<endl;
+    // cout<<a.get_element(5)<<endl;
+    // cout<<a.max_capacity()<<endl;
+    printall(a.begin(), a.end(), ' ');
+    cout<<*min_element(a.begin(), a.end())<<endl;
+    cout<<*max_element(a.begin(), a.end())<<endl;
+    cout<<(find(a.begin(), a.end(), 37) - a.begin());
     return 0;
 }
