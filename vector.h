@@ -11,6 +11,7 @@ namespace custom_stl{
             int capacity;
             void fill_same_element(T*, T);
             void resize_internal(int);
+            void shift_element(T*, bool, int);
 
         public:
             vector();
@@ -26,6 +27,8 @@ namespace custom_stl{
             T get_element(int);
             void set_element(int, T);
             void push_back(T);
+            void insert(T*, T);
+            void insert(int, T);
     };
 
     // default constructor
@@ -37,12 +40,12 @@ namespace custom_stl{
     }
 
     // create vector of given size with empty elements by delegation constructor
-    template <typename T> vector<T>::vector(int allot_size) : vector<T>::vector(){
-        resize(allot_size);
+    template <typename T> vector<T>::vector(int new_size) : vector<T>::vector(){
+        resize(new_size);
     }
 
     // create vector of given size with given elements by delegation constructor
-    template <typename T> vector<T>::vector(int allot_size, T element) : vector<T>::vector(allot_size){
+    template <typename T> vector<T>::vector(int new_size, T element) : vector<T>::vector(new_size){
         fill_same_element(beginit, element);
     }
 
@@ -83,28 +86,28 @@ namespace custom_stl{
         return b;
     }
 
-    template <typename T> void vector<T>::resize_internal(int allot_size){
-        capacity = allot_size * CAPACITY_TO_SIZE;
+    template <typename T> void vector<T>::resize_internal(int new_size){
+        capacity = new_size * CAPACITY_TO_SIZE;
         T * temp = new T[capacity];
-        for(int i = 0; i < min(allot_size, curr_size); ++i){
+        for(int i = 0; i < min(new_size, curr_size); ++i){
             temp[i] = beginit[i];
         }
         delete[] beginit;
         beginit = temp;
-        endit = beginit + allot_size;
+        endit = beginit + new_size;
     }
     
-    template <typename T> void vector<T>::resize(int allot_size){
-        resize_internal(allot_size);
-        curr_size = allot_size;
+    template <typename T> void vector<T>::resize(int new_size){
+        resize_internal(new_size);
+        curr_size = new_size;
     }
 
-    template <typename T> void vector<T>::resize(int allot_size, T element){
-        resize_internal(allot_size);
-        if(allot_size > curr_size){
+    template <typename T> void vector<T>::resize(int new_size, T element){
+        resize_internal(new_size);
+        if(new_size > curr_size){
             fill_same_element(beginit + curr_size, element);
         }
-        curr_size = allot_size;
+        curr_size = new_size;
     }
 
     template <typename T> void vector<T>::push_back(T element){
@@ -119,5 +122,38 @@ namespace custom_stl{
         for(T* it = start; it != endit; ++it){
             *it = element;
         }
+    }
+    
+    template <typename T> void vector<T>::insert(int idx, T element){
+        insert(beginit + idx, element);
+    }
+
+    template <typename T> void vector<T>::insert(T* pos, T element){
+        if(curr_size == capacity){
+            resize(curr_size);
+        }
+        shift_element(pos, 1, 1);
+        *pos = element;
+    }
+
+    // dir = 1 for right, dir = 0 to shift left
+    template <typename T> void vector<T>::shift_element(T* pos, bool dir, int count){
+        T * curr_element;
+        T * last_element;
+        if(!dir){
+            dir = -1;
+            curr_element = pos + count;
+            last_element = beginit + curr_size - 1;
+        }
+        else{
+            curr_element = beginit + curr_size;
+            last_element = pos;
+        }
+        while(curr_element != last_element){
+            curr_element += -1*dir;
+            *(curr_element + dir*count) = *curr_element;
+        }
+        curr_size += dir*count;
+        endit = beginit + curr_size;
     }
 }
