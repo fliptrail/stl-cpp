@@ -39,5 +39,17 @@ int main(){
     
     custom_stl::pair<int, int> hello;
     vector<vector<custom_stl::pair<int, double>>> hello2(5);
+
+    vector<int> amish(3, 2);
+    vector<int> h;
+    h = amish;  // shallow copy
+    cout<<"\n"<<amish.get_element(1)<<endl;
+    amish.set_element(1, 5);
+    cout<<"\n"<<h.get_element(1)<<endl;
+    cout<<"\n"<<amish.get_element(1)<<endl;
+
+    custom_stl::pair<int, double> trial = custom_stl::make_pair(3, 10.45);
+    cout<<trial.first<<" "<<trial.second<<endl;
+
     return 0;
 }
