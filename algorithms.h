@@ -10,6 +10,7 @@ namespace custom_stl{
     template <typename T> T * find(T * begin, T * end, T element);
     template <typename T> void reverse(T * begin, T * end);
     template <typename T> void swap(T &a, T &b);
+    template <typename T1, typename T2> custom_stl::pair<T1, T2> make_pair(T1 a, T2 b);
 
     template <typename T> void printall(T * begin, T * end, char sep){
         while(begin != end){
