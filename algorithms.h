@@ -8,6 +8,8 @@ namespace custom_stl{
     template <typename T> T * min_element(T * begin, T * end);
     template <typename T> T * max_element(T * begin, T * end);
     template <typename T> T * find(T * begin, T * end, T element);
+    template <typename T> void reverse(T * begin, T * end);
+    template <typename T> void swap(T &a, T &b);
 
     template <typename T> void printall(T * begin, T * end, char sep){
         while(begin != end){
@@ -75,5 +77,26 @@ namespace custom_stl{
             begin++;
         }
         return begin;
+    }
+
+    template <typename T> void swap(T &a, T &b){
+        T temp = a;
+        a = b;
+        b = temp;
+    }
+
+    template <typename T> void reverse(T * begin, T * end){
+        if(begin == end){
+            return ;
+        }
+        end--;
+        while(begin != end){
+            custom_stl:swap(*begin, *end);
+            begin++;
+            if(begin == end){
+                return ;
+            }
+            end--;
+        }
     }
 }
