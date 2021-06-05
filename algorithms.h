@@ -99,4 +99,11 @@ namespace custom_stl{
             end--;
         }
     }
+
+    template <typename T1, typename T2> custom_stl::pair<T1, T2> make_pair(T1 a, T2 b){
+        custom_stl::pair<T1, T2> temp;
+        temp.first = a;
+        temp.second = b;
+        return temp;
+    }
 }
