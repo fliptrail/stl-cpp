@@ -3,6 +3,10 @@
 
 namespace custom_stl{
     template <typename T> void printall(T * begin, T * end, char sep = ' ');
+    template <typename T> T min(T a, T b);
+    template <typename T> T max(T a, T b);
+    template <typename T> T * min_element(T * begin, T * end);
+    template <typename T> T * max_element(T * begin, T * end);
 
     template <typename T> void printall(T * begin, T * end, char sep){
         while(begin != end){
