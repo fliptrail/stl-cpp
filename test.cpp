@@ -1,5 +1,4 @@
-#include "algorithms.h"
-#include "vector.h"
+#include "import_all.h"
 #include <iostream>
 
 using namespace std;
