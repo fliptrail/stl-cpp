@@ -118,6 +118,7 @@ namespace custom_stl{
         }
         beginit[curr_size] = element;
         curr_size++;
+        endit++;
     }
 
     template <typename T> void vector<T>::fill_same_element(T* start, T element){
