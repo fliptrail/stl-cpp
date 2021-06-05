@@ -81,17 +81,10 @@ namespace custom_stl{
         beginit[idx] = element;
     }
 
-    int min(int a, int b){
-        if (a < b){
-            return a;
-        }
-        return b;
-    }
-
     template <typename T> void vector<T>::resize_internal(int new_size){
         capacity = new_size * CAPACITY_TO_SIZE;
         T * temp = new T[capacity];
-        for(int i = 0; i < min(new_size, curr_size); ++i){
+        for(int i = 0; i < custom_stl::min(new_size, curr_size); ++i){
             temp[i] = beginit[i];
         }
         delete[] beginit;
