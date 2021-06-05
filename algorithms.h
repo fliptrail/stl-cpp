@@ -25,4 +25,38 @@ namespace custom_stl{
         }
         return b;
     }
+
+    // returns pointer to first occurance of the minimum element in the given pointer range
+    // return end pointer if container is empty
+    template <typename T> T * min_element(T * begin, T * end){
+        if(begin == end){
+            return end;
+        }
+        T * ans = begin;
+        T * curr_element = begin + 1;
+        while(curr_element != end){
+            if(*curr_element < *ans){
+                ans = curr_element;
+            }
+            curr_element++;
+        }
+        return ans;
+    }
+
+    // returns pointer to first occurance of the maximum element in the given pointer range
+    // return end pointer if container is empty
+    template <typename T> T * max_element(T * begin, T * end){
+        if(begin == end){
+            return end;
+        }
+        T * ans = begin;
+        T * curr_element = begin + 1;
+        while(curr_element != end){
+            if(*curr_element > *ans){
+                ans = curr_element;
+            }
+            curr_element++;
+        }
+        return ans;
+    }
 }
