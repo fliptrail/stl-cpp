@@ -4,7 +4,11 @@
 namespace custom_stl{
     template <typename T> void printall(T * begin, T * end, char sep = ' ');
 
-    template <typename T> void printall(T * begin, T * end, char sep = ' '){
-        ;
+    template <typename T> void printall(T * begin, T * end, char sep){
+        while(begin != end){
+            std::cout<<*begin<<sep;
+            begin++;
+        }
+        std::cout<<std::endl;
     }
 }
