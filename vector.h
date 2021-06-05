@@ -29,6 +29,8 @@ namespace custom_stl{
             void push_back(T);
             void insert(T*, T);
             void insert(int, T);
+            void erase(T*);
+            void erase(int);
     };
 
     // default constructor
@@ -134,6 +136,14 @@ namespace custom_stl{
         }
         shift_element(pos, 1, 1);
         *pos = element;
+    }
+
+    template <typename T> void vector<T>::erase(T * pos){
+        shift_element(pos, 0, 1);
+    }
+
+    template <typename T> void vector<T>::erase(int idx){
+        erase(beginit + idx);
     }
 
     // dir = 1 for right, dir = 0 to shift left
