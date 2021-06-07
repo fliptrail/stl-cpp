@@ -17,10 +17,12 @@ namespace custom_stl{
         private:
             node<T> * root;
             void insert_bst(node<T> *, T &);
+            void erase_bst(node<T> *, T &);
 
         public:
             bst();
             void insert(T);
+            void erase(T);
     };
 
     template <typename T> bst<T>::bst(){
@@ -56,5 +58,16 @@ namespace custom_stl{
                 insert_bst(curr_node->right, element);
             }
         }
+    }
+
+    template <typename T> void bst<T>::erase(T element){
+        if(root == NULL){
+            return;
+        }
+        erase_bst(root, element);
+    }
+
+    template <typename T> void bst<T>::erase_bst(node<T> * curr_node, T &element){
+        // TODO
     }
 }
